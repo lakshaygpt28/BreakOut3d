@@ -37,7 +37,7 @@ public class GameManage : MonoBehaviour
 
     public void Setup()
     {
-        cloneSkate = Instantiate(skate, skate.transform.position, Quaternion.identity) as GameObject;
+        cloneSkate = Instantiate(skate, skate.transform.position, skate.transform.rotation) as GameObject;
         Instantiate(bricksPrefab, bricksPrefab.transform.position, Quaternion.identity);       
     }
 
@@ -75,7 +75,7 @@ public class GameManage : MonoBehaviour
 
     void SetupSkate()
     {
-        cloneSkate = Instantiate(skate, transform.position, Quaternion.identity) as GameObject;
+        cloneSkate = Instantiate(skate, skate.transform.position, skate.transform.rotation) as GameObject;
     }
 
     public void DestroyBrick()
