@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6633b0c3231e12443b85305e1c4636d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballInitialVelocity: 900
+  ballInitialVelocity: 1500
 --- !u!54 &5920051118806300627
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7616783537431301023}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -22.7}
+  m_LocalPosition: {x: 0, y: 1, z: -22}
   m_LocalScale: {x: 4, y: 1, z: 1}
   m_Children:
   - {fileID: 6727872897028968533}
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85cb7c0eb25a62d4d84040f5e26b3184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 30
   leftBorder: -12.5
   rightBorder: 12.5
 --- !u!65 &7616783537431301022

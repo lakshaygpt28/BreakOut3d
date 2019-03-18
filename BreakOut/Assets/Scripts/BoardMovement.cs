@@ -12,7 +12,7 @@ public class BoardMovement : MonoBehaviour
     void Update()
     {
         float xPos = transform.position.x + (Input.GetAxis("Horizontal") * speed * Time.deltaTime);
-        playerPos = new Vector3(Mathf.Clamp(xPos, -12.5f, 12.5f), 1, -21);
+        playerPos = new Vector3(Mathf.Clamp(xPos, leftBorder, rightBorder), 1, -21);
         transform.position = playerPos;
     }
 }

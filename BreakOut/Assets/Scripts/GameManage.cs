@@ -7,8 +7,13 @@ public class GameManage : MonoBehaviour
 {
     public int lives = 3;
     public int bricks = 10;
+    public float time = 0f;
     public float resetDelay = 1f;
+    public bool gameStart = false;
     public Text livesText;
+    public Text timeText;
+    public Text scoreText;
+    public Text highscoreText;
     public GameObject gameOver;
     public GameObject youWon;
     public GameObject bricksPrefab;
@@ -34,6 +39,14 @@ public class GameManage : MonoBehaviour
         }
         Setup();
     }
+    void Update()
+    {
+        if (gameStart)
+        {
+            time += Time.deltaTime;
+            timeText.text = "Time : " + time.ToString("0.0");
+        }
+    }
 
     public void Setup()
     {
@@ -45,19 +58,21 @@ public class GameManage : MonoBehaviour
     {
         if (bricks < 1)
         {
+            gameStart = false;
+            scoreText.text = "SCORE : " + time.ToString("0.0");
             youWon.SetActive(true);
             Time.timeScale = .25f;
-            Invoke("Reset", resetDelay);
+            //Invoke("Reset", resetDelay);
         }
         if (lives < 1)
         {
             gameOver.SetActive(true);
             Time.timeScale = .25f;
-            Invoke("Reset", resetDelay);
+            //Invoke("Reset", resetDelay);
         }
     }
 
-    void Reset()
+    public void Reset()
     {
         Time.timeScale = 1f;
         Application.LoadLevel(Application.loadedLevel);
@@ -66,11 +81,15 @@ public class GameManage : MonoBehaviour
     public void LoseLife()
     {
         lives--;
+        gameStart = false;
         livesText.text = "Lives: " + lives;
         Destroy(cloneSkate);
         Destroy(ball);
-        Invoke("SetupSkate", resetDelay);
         CheckGameOver();
+        if (lives >= 1 && bricks >= 1)
+        {
+            Invoke("SetupSkate", resetDelay);
+        }
     }
 
     void SetupSkate()

@@ -12,6 +12,7 @@ public class BallMovement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        GameManage.instance.gameStart = false;
     }
 
     void OnCollisionEnter(Collision collisionInfo)
@@ -31,6 +32,7 @@ public class BallMovement : MonoBehaviour
             ballInPlay = true;
             rb.isKinematic = false;
             rb.AddForce(ballInitialVelocity / 2, 0, ballInitialVelocity);
+            GameManage.instance.gameStart = true;
             
         }
 

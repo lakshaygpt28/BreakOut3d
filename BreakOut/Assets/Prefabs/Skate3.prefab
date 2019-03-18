@@ -177,8 +177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
-  leftBorder: -10
-  rightBorder: 10
+  leftBorder: -11.5
+  rightBorder: 11.5
 --- !u!1 &4343994023883898631
 GameObject:
   m_ObjectHideFlags: 0
