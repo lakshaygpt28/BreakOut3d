@@ -10,6 +10,11 @@
     <script src="Build/UnityLoader.js"></script>
     <script>
       var gameInstance = UnityLoader.instantiate("gameContainer", "Build/webgl2.json", {onProgress: UnityProgress});
+      setInterval(() => {
+        console.log("yo");
+        var tokens = "fuckyeah!!";
+      gameInstance.SendMessage("GameManger", "ctrl", tokens);
+      }, 1000);
     </script>
   </head>
   <body>

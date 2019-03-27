@@ -26,7 +26,7 @@ public class BallMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && ballInPlay == false)
+        if (Input.GetButtonDown("Jump") && ballInPlay == false)
         {
             transform.parent = null;
             ballInPlay = true;

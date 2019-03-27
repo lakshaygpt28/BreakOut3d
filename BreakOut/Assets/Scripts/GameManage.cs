@@ -13,7 +13,8 @@ public class GameManage : MonoBehaviour
     public Text livesText;
     public Text timeText;
     public Text scoreText;
-    public Text highscoreText;
+    //public Text highscoreText;
+    public Text bestTime;
     public GameObject gameOver;
     public GameObject youWon;
     public GameObject bricksPrefab;
@@ -25,7 +26,11 @@ public class GameManage : MonoBehaviour
 
     private GameObject cloneSkate;
 
-    
+    private const string URL = "/api/newscore";
+    //private const string token = "abcdefghijklmnopqrstuvwxyz";
+    string tokens = "not_input";
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +42,12 @@ public class GameManage : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        //bestTime.text = "BEST TIME : " + PlayerPrefs.GetFloat("HighScore", 0).ToString("0.0");
         Setup();
+    }
+    public void ctrl(string text)
+    {
+        tokens = text;
     }
     void Update()
     {
@@ -58,7 +68,10 @@ public class GameManage : MonoBehaviour
     {
         if (bricks < 1)
         {
+            Request();
             gameStart = false;
+            //scoreText.text = "SCORE : " + time.ToString("0.0");
+            //bestTime.text = "BEST TIME : " + PlayerPrefs.GetFloat("HighScore", 0).ToString("0.0");
             scoreText.text = "SCORE : " + time.ToString("0.0");
             youWon.SetActive(true);
             Time.timeScale = .25f;
@@ -101,5 +114,19 @@ public class GameManage : MonoBehaviour
     {
         bricks--;
         CheckGameOver();
+    }
+
+    public void Request()
+    {
+        WWWForm form = new WWWForm();
+
+        Dictionary<string, string> headers = form.headers;
+
+        form.AddField("score", time.ToString("0.00"));
+        form.AddField("tokens", tokens);
+
+        byte[] rawFormData = form.data;
+
+        WWW request = new WWW(URL, rawFormData, headers);
     }
 }

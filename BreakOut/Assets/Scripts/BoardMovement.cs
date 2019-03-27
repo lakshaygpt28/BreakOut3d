@@ -15,4 +15,8 @@ public class BoardMovement : MonoBehaviour
         playerPos = new Vector3(Mathf.Clamp(xPos, leftBorder, rightBorder), 1, -21);
         transform.position = playerPos;
     }
+    public AudioSource audioSource;
+
+
+   
 }
